@@ -4,8 +4,13 @@ const hakkimdaContent = document.querySelector(".hakkimda-content");
 const egitimBtn = document.querySelector(".egitim-btn");
 const egitimContent = document.querySelector(".egitim-content");
 
+const programBtn = document.querySelector(".program-btn");
+const programContent = document.querySelector(".program-content");
+
+const projeBtn = document.querySelector(".proje-btn");
+const projeContent = document.querySelector(".proje-content");
+
 hakkimdaBtn.addEventListener("click", function () {
-  console.log("clicked");
   if (hakkimdaContent.style.display === "block") {
     document.querySelector(".hakkimda-content").style.display = "none";
   } else {
@@ -14,10 +19,25 @@ hakkimdaBtn.addEventListener("click", function () {
 });
 
 egitimBtn.addEventListener("click", function () {
-  console.log("clicked");
   if (egitimContent.style.display === "block") {
     document.querySelector(".egitim-content").style.display = "none";
   } else {
     document.querySelector(".egitim-content").style.display = "block";
+  }
+});
+
+programBtn.addEventListener("click", function () {
+  if (programContent.style.display === "block") {
+    document.querySelector(".program-content").style.display = "none";
+  } else {
+    document.querySelector(".program-content").style.display = "block";
+  }
+});
+
+projeBtn.addEventListener("click", function () {
+  if (projeContent.style.display === "block") {
+    document.querySelector(".proje-content").style.display = "none";
+  } else {
+    document.querySelector(".proje-content").style.display = "block";
   }
 });

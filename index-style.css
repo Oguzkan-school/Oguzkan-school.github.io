@@ -15,13 +15,14 @@ h1 {
   padding-left: 50px;
   list-style-type: none;
 }
-.home-list-text {
+.home-btn {
   font-size: 50px;
   text-decoration: none;
-  color: black;
+  border: 10px solid rgb(189, 85, 0);
+  background-color: rgb(192, 125, 86);
 }
 
-.home-list-text:hover {
+.home-btn:hover {
   font-size: 50px;
   text-decoration: none;
   color: rgb(51, 51, 51);

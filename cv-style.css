@@ -49,3 +49,14 @@ h1 {
 .cv-list-entry-content {
   display: none;
 }
+
+.egitim-li {
+  border: 3px double black;
+  margin-right: 16px;
+  margin-top: 10px;
+}
+.egitim-li p {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 5px;
+}
