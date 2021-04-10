@@ -1,7 +1,7 @@
 body {
   /* Background */
   height: 930px;
-  background: linear-gradient(to top left, rgb(0, 255, 170), rgb(50, 205, 197));
+  background: linear-gradient(to left, rgb(0, 255, 170), rgb(50, 205, 197));
   background-size: cover;
 }
 
