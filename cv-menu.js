@@ -1,10 +1,23 @@
-const cvMenu = document.querySelector(".cv-list-entry-title");
-const cvParagraph = document.querySelector(".cv-list-entry-paragraph");
+const hakkimdaBtn = document.querySelector(".hakkimda-btn");
+const hakkimdaContent = document.querySelector(".hakkimda-content");
 
-cvMenu.addEventListener("click", function () {
-  if (cvParagraph.style.display === "none") {
-    document.querySelector(".cv-list-entry-paragraph").style.display = "block";
+const egitimBtn = document.querySelector(".egitim-btn");
+const egitimContent = document.querySelector(".egitim-content");
+
+hakkimdaBtn.addEventListener("click", function () {
+  console.log("clicked");
+  if (hakkimdaContent.style.display === "block") {
+    document.querySelector(".hakkimda-content").style.display = "none";
   } else {
-    document.querySelector(".cv-list-entry-paragraph").style.display = "none";
+    document.querySelector(".hakkimda-content").style.display = "block";
+  }
+});
+
+egitimBtn.addEventListener("click", function () {
+  console.log("clicked");
+  if (egitimContent.style.display === "block") {
+    document.querySelector(".egitim-content").style.display = "none";
+  } else {
+    document.querySelector(".egitim-content").style.display = "block";
   }
 });
