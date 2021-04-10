@@ -1,3 +1,6 @@
 body {
-  background-color: antiquewhite;
+  /* Background */
+  color: rgb(33, 70, 2);
+  height: 100vh;
+  background: linear-gradient(to top left, rgb(0, 255, 170), rgb(50, 205, 197));
 }
