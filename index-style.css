@@ -1,7 +1,8 @@
 body {
   /* Background */
   height: 930px;
-  background: linear-gradient(to left, rgb(0, 255, 170), rgb(50, 205, 197));
+  color: #d8e3e7;
+  background: linear-gradient(to left, #132c33, #126e82);
   background-size: cover;
 }
 
@@ -18,8 +19,8 @@ h1 {
 .home-btn {
   font-size: 50px;
   text-decoration: none;
-  border: 10px solid rgb(189, 85, 0);
-  background-color: rgb(192, 125, 86);
+  border: 10px solid #132c33;
+  background-color: #51c4d3;
 }
 
 .home-btn:hover {
