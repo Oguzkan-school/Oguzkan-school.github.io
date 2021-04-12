@@ -5,6 +5,8 @@ const hakkimdaNav = document.querySelector(".hakkimda-nav");
 const egitimNav = document.querySelector(".egitim-nav");
 const programNav = document.querySelector(".program-nav");
 const projeNav = document.querySelector(".proje-nav");
+const hobiNav = document.querySelector(".hobi-nav");
+const dilNav = document.querySelector(".dil-nav");
 const iletisimNav = document.querySelector(".iletisim-nav");
 
 const hakkimdaPosition = document
@@ -22,6 +24,8 @@ const projePosition = document
 const iletisimPosition = document
   .getElementById("iletisim-id")
   .getBoundingClientRect();
+const hobiPosition = document.getElementById("hobi-id").getBoundingClientRect();
+const dilPosition = document.getElementById("dil-id").getBoundingClientRect();
 
 window.onscroll = function () {
   scrollFunction();
@@ -51,4 +55,12 @@ projeNav.addEventListener("click", function () {
 
 iletisimNav.addEventListener("click", function () {
   window.scrollTo(0, iletisimPosition.y - 110);
+});
+
+hobiNav.addEventListener("click", function () {
+  window.scrollTo(0, hobiPosition.y - 110);
+});
+
+dilNav.addEventListener("click", function () {
+  window.scrollTo(0, dilPosition.y - 110);
 });

@@ -112,3 +112,34 @@ h1 {
 .iletisim-content li {
   list-style-type: none;
 }
+
+.hobi-content li {
+  list-style-type: none;
+}
+
+.hobi-content h2 {
+  text-align: center;
+}
+
+.hobi-content p {
+  border: 3px double black;
+  padding-top: 7px;
+  margin-right: 15px;
+  text-align: center;
+}
+
+.dil-content li {
+  list-style-type: none;
+}
+
+.dil-content h2 {
+  text-align: center;
+}
+
+.dil-content p {
+  border: 3px double black;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
