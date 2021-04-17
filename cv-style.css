@@ -76,12 +76,12 @@ h1 {
   display: block;
 }
 
-.egitim-li {
+.egitim-content li {
   border: 3px double black;
   margin-right: 16px;
   margin-top: 10px;
 }
-.egitim-li p {
+.egitim-content li p {
   margin-bottom: 5px;
   margin-top: 5px;
   margin-left: auto;
