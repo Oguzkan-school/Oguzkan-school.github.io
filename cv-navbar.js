@@ -27,12 +27,6 @@ const iletisimPosition = document
 const hobiPosition = document.getElementById("hobi-id").getBoundingClientRect();
 const dilPosition = document.getElementById("dil-id").getBoundingClientRect();
 
-window.onscroll = function () {
-  scrollFunction();
-};
-
-const scrollFunction = function () {};
-
 basNav.addEventListener("click", function () {
   document.documentElement.scrollTop = 0;
 });
