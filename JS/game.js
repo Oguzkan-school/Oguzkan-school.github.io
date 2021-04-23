@@ -42,6 +42,7 @@ difficultStartButton.addEventListener("click", function () {
 
 const GameCreation = function (size) {
   let rowName = 1;
+  let sizeSquare = size * size;
   easyStartButton.classList.add("hidden");
   mediumStartButton.classList.add("hidden");
   difficultStartButton.classList.add("hidden");
@@ -59,7 +60,7 @@ const GameCreation = function (size) {
       break;
   }
 
-  for (let j = 0; j < size * size; j++) {
+  for (let j = 0; j < sizeSquare; j++) {
     let count = 0;
     rowName = "row-" + String(j + 1);
 
@@ -83,7 +84,7 @@ const GameCreation = function (size) {
         break;
     }
 
-    for (let i = 0; i < size * size; i++) {
+    for (let i = 0; i < sizeSquare; i++) {
       let createdDiv = document.createElement("div");
 
       createdDiv.classList.add("answer-color");
@@ -108,7 +109,7 @@ const GameCreation = function (size) {
           document.getElementById("col-" + String(j + 1) + "-" + String(i + 1))
             .style.backgroundColor === targetColor.style.backgroundColor
         )
-          victory(difficultyName);
+          victory(sizeSquare);
       });
       switch (size) {
         case 3:
@@ -126,10 +127,10 @@ const GameCreation = function (size) {
   if (size != 3)
     for (let i = 0; i < size; i++) {
       document.getElementById(
-        "row-" + String(size * size) + "-" + String(i + 1)
+        "row-" + String(sizeSquare) + "-" + String(i + 1)
       ).style.marginBottom = "50px";
     }
-  GameRandomizer(size * size);
+  GameRandomizer(sizeSquare);
 };
 
 const GameRandomizer = function (difficulty) {
@@ -170,15 +171,5 @@ const gameStart = function () {
 
 const victory = function (difficulty) {
   score++;
-  switch (difficulty) {
-    case "easy":
-      GameRandomizer(9);
-      break;
-    case "medium":
-      GameRandomizer(16);
-      break;
-    case "difficult":
-      GameRandomizer(25);
-      break;
-  }
+  GameRandomizer(difficulty);
 };
