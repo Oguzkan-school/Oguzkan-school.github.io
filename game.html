@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="CSS/bootstrap.css" rel="stylesheet" />
+    <link href="CSS/sidenav-css.css" rel="stylesheet" />
+    <link href="CSS/game-style.css" rel="stylesheet" />
+    <title>Oguzkan Kaptan | Game</title>
+  </head>
+  <body>
+    <nav class="header">
+      <img class="menu-btn header-child" src="images/menu.png" />
+      <a class="header-child header-text" href="index.html">OGUZKANKAPTAN.ME</a>
+    </nav>
+
+    <div class="side-nav">
+      <img class="close-btn" src="images/close.png" />
+      <a class="side-link" href="index.html">Ana Sayfa</a>
+      <a class="side-link" href="cv.html">Özgeçmişim</a>
+      <a class="side-link" href="game.html">Oyun</a>
+    </div>
+
+    <div id="main">
+      <h1 id="title">Oyun</h1>
+    </div>
+
+    <div id="game-screen">
+      <div id="time-container" class="container hidden">
+        <div id="time-modal" class="row justify-content-center">
+          <p class="col-md-2">TIME:</p>
+          <p id="time" class="col-md-2">60</p>
+          <div id="target-color" class="col-md-2"></div>
+        </div>
+      </div>
+      <div id="difficulties" class="container">
+        <div class="row">
+          <button id="easy-start" class="col-4">Easy Game</button>
+          <button id="medium-start" class="col-4">Medium Game</button>
+          <button id="difficult-start" class="col-4">Difficult Game</button>
+        </div>
+      </div>
+
+      <div id="easy-modal" class="container"></div>
+
+      <div id="medium-modal" class="container">
+        <div class="row">
+          <div id="medium-modal-1" class="col-3"></div>
+          <div id="medium-modal-2" class="col-3"></div>
+          <div id="medium-modal-3" class="col-3"></div>
+          <div id="medium-modal-4" class="col-3"></div>
+        </div>
+      </div>
+
+      <div id="difficult-modal" class="container">
+        <div class="row">
+          <div id="difficult-modal-1" class="col-2"></div>
+          <div id="difficult-modal-2" class="col-2"></div>
+          <div id="difficult-modal-3" class="col-2"></div>
+          <div id="difficult-modal-4" class="col-2"></div>
+          <div id="difficult-modal-5" class="col-2"></div>
+          <div id="difficult-modal-6" class="col-2"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="finish" class="container hidden">
+      <div class="row justify-content-center"><p>Game Over</p></div>
+      <div class="row justify-content-center">
+        <div class="col-2"><p>Score:</p></div>
+        <div class="col-2"><p id="game-score"></p></div>
+      </div>
+      <div class="row justify-content-center">
+        <button onclick="location.reload();">Yeniden Oyna</button>
+      </div>
+    </div>
+
+    <footer class="end-footer">Oğuzkan Kaptan</footer>
+  </body>
+
+  <script src="JS/sidenav.js"></script>
+  <script src="JS/game.js"></script>
+</html>
