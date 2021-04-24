@@ -6,6 +6,16 @@ body {
   background-size: cover;
 }
 
+.hidden {
+  display: none;
+}
+
+.answer-color {
+  border: 3px solid white;
+  height: 50px;
+  width: 50px;
+}
+
 #title {
   font-family: sans-serif;
   font-style: bold;
@@ -17,21 +27,11 @@ body {
   justify-content: center;
 }
 
-.hidden {
-  display: none;
-}
-
 #target-color {
   border: 3px solid white;
   height: 50px;
   width: 50px;
   background-color: #000000;
-}
-
-.answer-color {
-  border: 3px solid white;
-  height: 50px;
-  width: 50px;
 }
 
 #time-modal {
