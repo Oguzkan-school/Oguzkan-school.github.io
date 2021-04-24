@@ -88,17 +88,7 @@ const GameCreation = function (size) {
       let createdDiv = document.createElement("div");
 
       createdDiv.classList.add("answer-color");
-      switch (size) {
-        case 3:
-          createdDiv.classList.add("col-1");
-          break;
-        case 4:
-          createdDiv.classList.add("col-3");
-          break;
-        case 5:
-          createdDiv.classList.add("col-2");
-          break;
-      }
+      createdDiv.classList.add("col");
       createdDiv.setAttribute(
         "id",
         "col-" + String(j + 1) + "-" + String(i + 1)
