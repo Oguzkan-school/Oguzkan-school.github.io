@@ -11,7 +11,6 @@ let answerColor,
 
 const randomizeColor = function () {
   let color = "";
-  Math.floor(Math.random() * 256).toString(16);
   for (let t = 0; t < 3; t++) {
     let sub = Math.floor(Math.random() * 256).toString(16);
     color += sub.length == 1 ? "0" + sub : sub;
