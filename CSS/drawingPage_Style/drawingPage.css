@@ -142,7 +142,6 @@ main #saveBtn {
   display: block;
   width: 30px;
   height: 30px;
-  margin: 0 auto;
   color: #171717;
   font-size: 20px;
   font-weight: 900;
@@ -153,13 +152,27 @@ main #saveBtn {
 }
 
 main #saveBtn::after {
-  top: 0;
-  bottom: 0;
-  left: -8px;
-  right: 0;
   content: "S";
   font-size: 25px;
   color: #171717;
   line-height: 0px;
-  text-align: center;
+}
+
+main #uploadBtn {
+  display: block;
+  width: 30px;
+  height: 30px;
+  font-size: 20px;
+  font-weight: 900;
+  background-color: #ffce00;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+main #uploadBtn::after {
+  content: "U";
+  font-size: 25px;
+  color: #171717;
+  line-height: 0px;
 }

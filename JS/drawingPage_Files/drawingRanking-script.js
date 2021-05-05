@@ -21,9 +21,7 @@
 //   console.log(entryList);
 // });
 
-const get = document.getElementById("getBtn"); //GET request
-
-get.addEventListener("click", function () {
+const getFromDatabase = function () {
   let xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function () {
     if (this.readyState === 4 && this.status === 200) {
@@ -33,20 +31,28 @@ get.addEventListener("click", function () {
       }
     }
   };
-  xhttp.open("GET", "http://localhost:8080/test", true);
+  let getLink =
+    window.location.href.substr(0, 22) === "http://localhost:5500/"
+      ? "http://localhost:8080/test"
+      : "http://localhost:8080/GET";
+  xhttp.open("GET", getLink, true);
   xhttp.send();
-});
+};
 
-const post = document.getElementById("postBtn");
-
-post.addEventListener("click", function () {
+const postToDatabase = function () {
   // POST request
   let xhttp = new XMLHttpRequest();
   let order = { idInsert: "9", nameInsert: "Solidus", scoreInsert: "1627" };
   let urlOrder = `?idInsert=${order.idInsert}&nameInsert=${order.nameInsert}&scoreInsert=${order.scoreInsert}`;
-  xhttp.open("POST", "http://localhost:8080/insert" + urlOrder, true);
+  let postLink =
+    window.location.href.substr(0, 22) === "http://localhost:5500/"
+      ? "http://localhost:8080/insert"
+      : "http://localhost:8080/POST";
+  xhttp.open("POST", postLink + urlOrder, true);
 
   xhttp.setRequestHeader("Content-Type", "application/json");
 
   xhttp.send();
-});
+};
+
+getFromDatabase();

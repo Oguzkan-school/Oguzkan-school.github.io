@@ -5,39 +5,39 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="CSS/bootstrap.css" rel="stylesheet" />
-    <link href="CSS/mainPage-style.css" rel="stylesheet" />
+    <link href="CSS/drawingPage_Style/drawingRanking.css" rel="stylesheet" />
+    <link href="CSS/sidenav-css.css" rel="stylesheet" />
     <title>Drawing Website</title>
   </head>
   <body>
+    <nav id="header">
+      <img id="menu-btn" class="header-child" src="images/menu.png" />
+      <a id="header-text" class="header-child" href="index.html"
+        >OGUZKANKAPTAN.ME</a
+      >
+    </nav>
+
+    <div id="side-nav">
+      <img id="close-btn" src="images/close.png" />
+      <a class="side-link" href="index.html">Ana Sayfa</a>
+      <a class="side-link" href="cv.html">Özgeçmişim</a>
+      <a class="side-link" href="game.html">Oyun</a>
+      <a class="side-link" href="drawingMainPage.html">Çizimler Sıralaması</a>
+      <a class="side-link" href="drawingPage.html">Çiz</a>
+    </div>
+
     <div id="top-bar" class="container-fluid">
       <div class="row justify-content-between">
-        <h1 class="col">Website Name</h1>
         <button onclick="window.location='drawingPage.html'" class="col-3">
           Submit a drawing
         </button>
-        <button id="getBtn" class="col-3">Get Request</button>
-        <button id="postBtn" class="col-3">Post Request</button>
       </div>
     </div>
-
-    <!-- <div class="container">
-      <div class="row">
-        <form class="col">
-          <label for="id">id</label><br />
-          <input type="number" id="id" name="id" /><br />
-          <label for="name">name</label><br />
-          <input type="text" id="name" name="name" /><br />
-          <label for="score">name</label><br />
-          <input type="number" id="score" name="score" /><br /><br />
-          <input type="submit" id="submit" value="Submit" />
-        </form>
-      </div>
-    </div> -->
 
     <div id="showcase-area" class="container-fluid">
       <div class="row">
         <div class="col-4">
-          <img src="testImages/console.png" />
+          <img src="images/console.png" />
           <div class="container-fluid">
             <div class="row">
               <p class="col-9" id="console-name">Console</p>
@@ -50,7 +50,7 @@
           </div>
         </div>
         <div class="col-4">
-          <img src="testImages/envelope.png" />
+          <img src="images/envelope.png" />
           <div class="container-fluid">
             <div class="row">
               <p class="col-9">Name</p>
@@ -63,7 +63,7 @@
           </div>
         </div>
         <div class="col-4">
-          <img src="testImages/linkedin.png" />
+          <img src="images/linkedin.png" />
           <div class="container-fluid">
             <div class="row">
               <p class="col-9">Name</p>
@@ -78,7 +78,7 @@
       </div>
       <div class="row">
         <div class="col-4">
-          <img src="testImages/pencil.png" />
+          <img src="images/pencil.png" />
           <div class="container-fluid">
             <div class="row">
               <p class="col-9">Name</p>
@@ -91,7 +91,7 @@
           </div>
         </div>
         <div class="col-4">
-          <img src="testImages/phone.png" />
+          <img src="images/phone.png" />
           <div class="container-fluid">
             <div class="row">
               <p class="col-9">Name</p>
@@ -104,7 +104,7 @@
           </div>
         </div>
         <div class="col-4">
-          <img src="testImages/star.png" />
+          <img src="images/star.png" />
           <div class="container-fluid">
             <div class="row">
               <p class="col-9">Name</p>
@@ -119,5 +119,6 @@
       </div>
     </div>
   </body>
-  <script src="JS/drawingRanking-script.js"></script>
+  <script src="JS/sidenav.js"></script>
+  <script src="JS/drawingPage_Files/drawingRanking-script.js"></script>
 </html>
