@@ -42,12 +42,12 @@ const clearCanvas = function () {
 const saveCanvas = function () {
   if (window.navigator.msSaveBlob)
     // For Internet Explorer and Edge Support
-    window.navigator.mySaveBlob(canvas.msToBlob(), "test-image.png");
+    window.navigator.mySaveBlob(canvas.msToBlob(), "My_drawing.png");
   else {
     let downloadElem = document.createElement("a");
     document.body.appendChild(downloadElem);
     downloadElem.href = canvas.toDataURL();
-    downloadElem.download = "test-image.png";
+    downloadElem.download = "My_drawing.png";
     downloadElem.click();
     document.body.removeChild(downloadElem);
   }
