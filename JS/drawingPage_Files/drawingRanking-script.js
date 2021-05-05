@@ -63,3 +63,4 @@ const postToDatabase = function () {
 };
 
 getFromDatabase();
+postToDatabase();
