@@ -85,8 +85,7 @@ const GameCreation = function (size) {
 
     for (let i = 0; i < sizeSquare; i++) {
       let createdDiv = document.createElement("div");
-
-      createdDiv.classList.add("answer-color");
+      -createdDiv.classList.add("answer-color");
       createdDiv.classList.add("col");
       createdDiv.setAttribute(
         "id",
