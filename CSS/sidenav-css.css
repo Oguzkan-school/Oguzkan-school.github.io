@@ -1,4 +1,4 @@
-.header {
+#header {
   border-bottom: 3px solid black;
   background: linear-gradient(to right, #d8e3e7, #51c4d3);
   width: 100%;
@@ -12,7 +12,7 @@
   font-size: 40px;
   float: left;
 }
-.header-text {
+#header-text {
   margin: auto;
   width: 50%;
   padding: 17px;
@@ -21,13 +21,13 @@
   font-family: sans-serif;
 }
 
-.menu-btn {
+#menu-btn {
   width: 80px;
   margin: auto;
   padding: 0px;
 }
 
-.side-nav {
+#side-nav {
   /* yan menü görünüşü */
   height: 100%;
   width: 0; /* JS tarafından değiştirilecek */
@@ -56,7 +56,7 @@
   color: #e6e6e6;
 }
 
-.close-btn {
+#close-btn {
   display: none;
   position: fixed;
   color: white;
@@ -75,11 +75,11 @@
   }
 }
 
-.main {
+main {
   margin-top: 95px;
 }
 
-.end-footer {
+#end-footer {
   border-top: 3px solid black;
   background: linear-gradient(to right, #d8e3e7, #51c4d3);
   color: #132c33;

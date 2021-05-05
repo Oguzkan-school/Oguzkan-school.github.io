@@ -3,9 +3,19 @@ const context = canvas.getContext("2d");
 const clearBtn = document.getElementById("clearBtn");
 const saveBtn = document.getElementById("saveBtn");
 const strokeWeight = document.getElementById("stroke-weight");
-const color = document.getElementById("color-picker");
+const color = document.getElementById("custom-color");
+const colorOption = [];
 
 let isDrawing = false;
+
+const loadColors = function () {
+  for (let i = 0; i < 8; i++) {
+    colorOption.push(document.getElementById(`color_${i + 1}`));
+    colorOption[i].addEventListener("click", function () {
+      color.value = colorOption[i].style.backgroundColor;
+    });
+  }
+};
 
 const resizeCanvas = function () {
   canvas.width = 800;
@@ -40,21 +50,20 @@ const clearCanvas = function () {
 };
 
 const saveCanvas = function () {
-  if (window.navigator.msSaveBlob)
-    // For Internet Explorer and Edge Support
-    window.navigator.mySaveBlob(canvas.msToBlob(), "My_drawing.png");
-  else {
-    let downloadElem = document.createElement("a");
-    document.body.appendChild(downloadElem);
-    downloadElem.href = canvas.toDataURL();
-    downloadElem.download = "My_drawing.png";
-    downloadElem.click();
-    document.body.removeChild(downloadElem);
-  }
+  let downloadElem = document.createElement("a");
+  let drawingName = document.getElementById("drawing-name").value;
+  document.body.appendChild(downloadElem);
+  downloadElem.href = canvas.toDataURL();
+  downloadElem.download = `${
+    drawingName === "Drawing Name" ? "My Drawing.png" : drawingName
+  }`;
+  downloadElem.click();
+  document.body.removeChild(downloadElem);
 };
 
 resizeCanvas();
 
+window.addEventListener("onload", loadColors());
 window.addEventListener("resize", resizeCanvas());
 canvas.addEventListener("mousedown", start);
 canvas.addEventListener("mousemove", draw);
