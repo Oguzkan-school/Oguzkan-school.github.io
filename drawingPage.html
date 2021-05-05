@@ -5,11 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="CSS/bootstrap.css" rel="stylesheet" />
-    <link href="CSS/index-style.css" rel="stylesheet" />
+    <link href="CSS/drawingPage.css" rel="stylesheet" />
     <link href="CSS/sidenav-css.css" rel="stylesheet" />
-    <title>Oğuzkan Kaptan</title>
+    <title>Drawing Page</title>
   </head>
-
   <body>
     <nav class="header">
       <img class="menu-btn header-child" src="images/menu.png" />
@@ -23,25 +22,25 @@
       <a class="side-link" href="game.html">Oyun</a>
       <a class="side-link" href="drawingPage.html">Çiz</a>
     </div>
-
-    <div class="main">
-      <h1 class="title">Oğuzkan Kaptan'ın kişisel websitesi</h1>
-
-      <ol class="home-list">
-        <a class="home-list-text" href="cv.html"
-          ><button class="home-btn">Özgeçmişim</button></a
-        >
-        <a class="home-list-text" href="game.html"
-          ><button class="home-btn">Oyun</button></a
-        >
-        <a class="home-list-text" href="drawingPage.html"
-          ><button class="home-btn">Çiz</button></a
-        >
-      </ol>
-    </div>
-    <footer class="end-footer">Oğuzkan Kaptan</footer>
+    <canvas id="canvas"></canvas>
+    <main>
+      <section class="colors">
+        <input type="" id="color-picker" class="color-picker" value="#171717" />
+      </section>
+      <section class="thickness">
+        <input
+          type="number"
+          id="stroke-weight"
+          class="stroke-weight"
+          value="3"
+          max="100"
+          min="1"
+        />
+      </section>
+      <section><button id="clearBtn" class="clear"></button></section>
+      <section><button id="saveBtn" class="save"></button></section>
+    </main>
   </body>
-
   <script src="JS/sidenav.js"></script>
-  <script src="JS/game.js"></script>
+  <script src="JS/drawinPage-script.js"></script>
 </html>
