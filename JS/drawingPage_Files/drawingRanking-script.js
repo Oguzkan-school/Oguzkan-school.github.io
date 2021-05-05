@@ -41,9 +41,16 @@ const getFromDatabase = function () {
 
 const postToDatabase = function () {
   // POST request
+  let link =
+    "https://github.com/Oguzkan-school/Oguzkan-school.github.io/blob/main/images/screen.png?raw=true";
   let xhttp = new XMLHttpRequest();
-  let order = { idInsert: "9", nameInsert: "Solidus", scoreInsert: "1627" };
-  let urlOrder = `?idInsert=${order.idInsert}&nameInsert=${order.nameInsert}&scoreInsert=${order.scoreInsert}`;
+  let order = {
+    idInsert: "7",
+    nameInsert: "Solidus",
+    scoreInsert: "1627",
+    linkInsert: link,
+  };
+  let urlOrder = `?idInsert=${order.idInsert}&nameInsert=${order.nameInsert}&scoreInsert=${order.scoreInsert}&linkInsert=${order.linkInsert}`;
   let postLink =
     window.location.href.substr(0, 22) === "http://localhost:5500/"
       ? "http://localhost:8080/insert"

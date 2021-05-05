@@ -2,6 +2,7 @@ const canvas = document.getElementById("canvas");
 const context = canvas.getContext("2d");
 const clearBtn = document.getElementById("clearBtn");
 const saveBtn = document.getElementById("saveBtn");
+const uploadBtn = document.getElementById("uploadBtn");
 const strokeWeight = document.getElementById("stroke-weight");
 const color = document.getElementById("custom-color");
 const colorOption = [];
@@ -61,6 +62,14 @@ const saveCanvas = function () {
   document.body.removeChild(downloadElem);
 };
 
+const uploadCanvas = function () {
+  let drawingName = document.getElementById("drawing-name").value;
+  if (drawingName === "Drawing Name") drawingName = "My Drawing";
+  window.navigator.mySaveBlob(canvas.msToBlob(), drawingName);
+
+  window.location = "drawingMainPage.html";
+};
+
 resizeCanvas();
 
 window.addEventListener("onload", loadColors());
@@ -70,3 +79,4 @@ canvas.addEventListener("mousemove", draw);
 canvas.addEventListener("mouseup", stop);
 clearBtn.addEventListener("click", clearCanvas);
 saveBtn.addEventListener("click", saveCanvas);
+uploadBtn.addEventListener("click", uploadCanvas);
