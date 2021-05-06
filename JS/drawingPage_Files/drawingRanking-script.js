@@ -1,66 +1,120 @@
-// const test = document.getElementById("submit"); Make JSON
+// Get the api link based on the host name
+const getApiLink = function () {
+  if (window.location.href.substr(0, 22) === "http://localhost:5500/")
+    return "http://localhost:8080/test";
+  else return "http://localhost:8080/GET";
+};
 
-// test.addEventListener("click", function () {
-//   let id = parseInt(document.getElementById("id").value);
-//   let name = document.getElementById("name").value;
-//   let score = parseInt(document.getElementById("score").value);
-//   let entryList = [];
-
-//   for (let i = 0; i < 3; i++) {
-//     let jsonData = {};
-//     let jsonEntry = {};
-//     jsonData["id"] = id;
-//     jsonData["name"] = name;
-//     jsonData["score"] = score;
-//     jsonEntry["drawing"] = jsonData;
-//     entryList.push(jsonEntry);
-//     id++;
-//     score = score + 500;
-//     name = name + " again";
-//   }
-//   console.log(entryList);
-// });
-
-const getFromDatabase = function () {
-  let xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function () {
+const loadDrawings = function () {
+  let xhttpGet = new XMLHttpRequest();
+  xhttpGet.onreadystatechange = function () {
     if (this.readyState === 4 && this.status === 200) {
-      let jsonArray = JSON.parse(this.responseText);
-      for (let i = 0; i < jsonArray.length; i++) {
-        console.log(jsonArray[i].drawing);
-      }
+      let imagesJson = JSON.parse(this.responseText);
+      pageCreation(imagesJson);
     }
   };
-  let getLink =
-    window.location.href.substr(0, 22) === "http://localhost:5500/"
-      ? "http://localhost:8080/test"
-      : "http://localhost:8080/GET";
-  xhttp.open("GET", getLink, true);
-  xhttp.send();
+  xhttpGet.open("GET", getApiLink(), true);
+  xhttpGet.send();
 };
 
-const postToDatabase = function () {
-  // POST request
-  let link =
-    "https://github.com/Oguzkan-school/Oguzkan-school.github.io/blob/main/images/screen.png?raw=true";
-  let xhttp = new XMLHttpRequest();
-  let order = {
-    idInsert: "7",
-    nameInsert: "Solidus",
-    scoreInsert: "1627",
-    linkInsert: link,
-  };
-  let urlOrder = `?idInsert=${order.idInsert}&nameInsert=${order.nameInsert}&scoreInsert=${order.scoreInsert}&linkInsert=${order.linkInsert}`;
-  let postLink =
-    window.location.href.substr(0, 22) === "http://localhost:5500/"
-      ? "http://localhost:8080/insert"
-      : "http://localhost:8080/POST";
-  xhttp.open("POST", postLink + urlOrder, true);
+const pageCreation = function (imagesJson) {
+  let imageRow;
+  imageRow = document.createElement("div");
+  imageRow.classList.add("row");
+  for (let i = 0; i < imagesJson.length; i++) {
+    let id, src, name, score;
+    id = imagesJson[i].drawing.id;
+    name = imagesJson[i].drawing.name;
+    score = imagesJson[i].drawing.score;
+    src = imagesJson[i].drawing.data;
 
-  xhttp.setRequestHeader("Content-Type", "application/json");
+    let newImageContainer,
+      newImageSrc,
+      newImageDetails,
+      newNameRow,
+      newScoreRow,
+      newImageName,
+      newImageScore,
+      newPlusButton,
+      newMinusButton;
 
-  xhttp.send();
+    newImageContainer = document.createElement("div");
+    newImageContainer.classList.add("col-4");
+
+    newImageSrc = document.createElement("img");
+    newImageSrc.src = src;
+
+    newImageDetails = document.createElement("div");
+    newImageDetails.classList.add("container-fluid");
+
+    newNameRow = document.createElement("div");
+    newNameRow.classList.add("row");
+
+    newScoreRow = document.createElement("div");
+    newScoreRow.classList.add("row");
+
+    newImageName = document.createElement("p");
+    newImageName.classList.add("col-9");
+    newImageName.id = `${name}-name`;
+    newImageName.textContent = name;
+
+    newImageScore = document.createElement("p");
+    newImageScore.classList.add("col-5");
+    newImageScore.id = `${name}-score`;
+    newImageScore.textContent = score;
+
+    newPlusButton = document.createElement("button");
+    newPlusButton.classList.add("col-2");
+    newPlusButton.id = `${name}-plus-btn`;
+    newPlusButton.textContent = `+`;
+    newPlusButton.addEventListener("click", function () {
+      PUT(id, name, score + 1, src);
+      window.location = "drawingMainPage.html";
+    });
+
+    newMinusButton = document.createElement("button");
+    newMinusButton.classList.add("col-2");
+    newMinusButton.id = `${name}-minus-btn`;
+    newMinusButton.textContent = `-`;
+    newMinusButton.addEventListener("click", function () {
+      PUT(id, name, score - 1, src);
+      window.location = "drawingMainPage.html";
+    });
+
+    newNameRow.appendChild(newImageName);
+
+    newScoreRow.appendChild(newImageScore);
+    newScoreRow.appendChild(newPlusButton);
+    newScoreRow.appendChild(newMinusButton);
+
+    newImageDetails.appendChild(newNameRow);
+    newImageDetails.appendChild(newScoreRow);
+
+    newImageContainer.appendChild(newImageSrc);
+    newImageContainer.appendChild(newImageDetails);
+
+    if (i % 3 === 0 && i !== 1 && i !== 0) {
+      imageRow = document.createElement("div");
+      imageRow.classList.add("row");
+    }
+    imageRow.appendChild(newImageContainer);
+    document.getElementById("showcase-area").appendChild(imageRow);
+  }
 };
 
-getFromDatabase();
-postToDatabase();
+const PUT = function (targetId, imgName, newScore, baseImg) {
+  let updateJson = `[{id: ${targetId}, name: "${imgName}", score: ${newScore}, data:"${baseImg}"}]`;
+  let xhttpPut = new XMLHttpRequest();
+
+  xhttpPut.open(
+    "PUT",
+    window.location.href.substr(0, 22) === "http://localhost:5500/"
+      ? "http://localhost:8080/update/" + targetId
+      : "http://localhost:8080/PUT/" + targetId,
+    true
+  );
+  xhttpPut.setRequestHeader("Content-Type", "application/json");
+  xhttpPut.send(updateJson);
+};
+
+loadDrawings();

@@ -16,6 +16,8 @@ main {
 }
 
 #canvas {
+  width: 800px;
+  height: 600px;
   background: white;
   margin: 0;
   border-bottom: #171717 solid 5px;
