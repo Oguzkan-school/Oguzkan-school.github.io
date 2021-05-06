@@ -1,11 +1,10 @@
-// Get the api link based on the host name
-const getApiLink = function () {
-  if (window.location.href.substr(0, 22) === "http://localhost:5500/")
-    return "http://localhost:8080/test";
-  else return "http://localhost:8080/GET";
-};
-
 const loadDrawings = function () {
+  // Get the api link based on the host name
+  apiLink =
+    window.location.href.substr(0, 22) === "http://localhost:5500/"
+      ? "http://localhost:8080/test?additionalQuery= ORDER BY score DESC"
+      : "http://localhost:8080/GET?additionalQuery= ORDER BY score DESC";
+
   let xhttpGet = new XMLHttpRequest();
   xhttpGet.onreadystatechange = function () {
     if (this.readyState === 4 && this.status === 200) {
@@ -13,7 +12,7 @@ const loadDrawings = function () {
       pageCreation(imagesJson);
     }
   };
-  xhttpGet.open("GET", getApiLink(), true);
+  xhttpGet.open("GET", apiLink, true);
   xhttpGet.send();
 };
 
