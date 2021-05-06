@@ -64,10 +64,57 @@ const saveCanvas = function () {
 
 const uploadCanvas = function () {
   let drawingName = document.getElementById("drawing-name").value;
-  if (drawingName === "Drawing Name") drawingName = "My Drawing";
-  window.navigator.mySaveBlob(canvas.msToBlob(), drawingName);
+  let baseImg = canvas.toDataURL();
+  drawingName === "Drawing Name" ? "My Drawing.png" : drawingName;
+  addImageToDatabase(baseImg, drawingName);
+};
 
-  window.location = "drawingMainPage.html";
+const getApiLink = function () {
+  if (window.location.href.substr(0, 22) === "http://localhost:5500/")
+    return "http://localhost:8080/test";
+  else return "http://localhost:8080/GET";
+};
+
+const addImageToDatabase = function (baseImg, imgName) {
+  // POST Drawing
+  let xhttpGet = new XMLHttpRequest();
+  xhttpGet.onreadystatechange = function () {
+    if (this.readyState === 4 && this.status === 200) {
+      let jsonForId = JSON.parse(this.responseText);
+      let imgId = jsonForId[jsonForId.length - 1].drawing.id + 1;
+      let imageJson = `[{id: ${imgId}, name: "${imgName}", score: 0, data:"${baseImg}"}]`;
+      let xhttpPost = new XMLHttpRequest();
+
+      xhttpPost.open(
+        "POST",
+        window.location.href.substr(0, 22) === "http://localhost:5500/"
+          ? "http://localhost:8080/insert"
+          : "http://localhost:8080/POST",
+        true
+      );
+
+      xhttpPost.setRequestHeader("Content-Type", "application/json");
+
+      xhttpPost.send(imageJson);
+
+      xhttpPost.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200)
+          if (this.response === "duplicate") console.log("duplicate name");
+          else console.log("good to go");
+      };
+    }
+  };
+  xhttpGet.open("GET", getApiLink(), true);
+  xhttpGet.send();
+};
+
+const writeToJson = function (imgId, imgName, baseImg, imgScore) {
+  let jsonData = {};
+  jsonData["id"] = imgId;
+  jsonData["name"] = imgName;
+  jsonData["score"] = imgScore;
+  jsonData["data"] = baseImg;
+  return jsonData;
 };
 
 resizeCanvas();
