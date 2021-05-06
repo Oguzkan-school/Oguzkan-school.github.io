@@ -68,8 +68,9 @@ const pageCreation = function (imagesJson) {
     newPlusButton.id = `${name}-plus-btn`;
     newPlusButton.textContent = `+`;
     newPlusButton.addEventListener("click", function () {
-      PUT(id, name, score + 1, src);
-      window.location = "drawingMainPage.html";
+      score++;
+      PUT(id, name, score, src, `${name}-plus-btn`);
+      newImageScore.textContent = score;
     });
 
     newMinusButton = document.createElement("button");
@@ -77,8 +78,9 @@ const pageCreation = function (imagesJson) {
     newMinusButton.id = `${name}-minus-btn`;
     newMinusButton.textContent = `-`;
     newMinusButton.addEventListener("click", function () {
-      PUT(id, name, score - 1, src);
-      window.location = "drawingMainPage.html";
+      score--;
+      PUT(id, name, score, src, `${name}-minus-btn`);
+      newImageScore.textContent = score;
     });
 
     newNameRow.appendChild(newImageName);
@@ -102,7 +104,8 @@ const pageCreation = function (imagesJson) {
   }
 };
 
-const PUT = function (targetId, imgName, newScore, baseImg) {
+const PUT = function (targetId, imgName, newScore, baseImg, clickedElement) {
+  clickedElement.disabled = true;
   let updateJson = `[{id: ${targetId}, name: "${imgName}", score: ${newScore}, data:"${baseImg}"}]`;
   let xhttpPut = new XMLHttpRequest();
 
@@ -115,6 +118,11 @@ const PUT = function (targetId, imgName, newScore, baseImg) {
   );
   xhttpPut.setRequestHeader("Content-Type", "application/json");
   xhttpPut.send(updateJson);
+
+  xhttpPut.onreadystatechange = function () {
+    if (this.readyState === 4 && this.status === 200)
+      clickedElement.disabled = false;
+  };
 };
 
 loadDrawings();
